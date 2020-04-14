@@ -28,7 +28,7 @@ namespace Pacco.APIGateway
                         {
                             const string extension = "yml";
                             var ntradaConfig = Environment.GetEnvironmentVariable("NTRADA_CONFIG");
-                            var configPath = args?.FirstOrDefault() ?? ntradaConfig ?? $"ntrada.{extension}";
+                            var configPath = args?.FirstOrDefault() ?? ntradaConfig ?? $"ntrada-async.{extension}";
                             if (!configPath.EndsWith($".{extension}"))
                             {
                                 configPath += $".{extension}";
