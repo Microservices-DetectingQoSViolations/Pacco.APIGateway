@@ -5,7 +5,7 @@ POST {{api}}/identity/sign-up
 Content-Type: application/json
 
 {
-  "email": "user1@mailinator.com",
+  "email": "user2@mailinator.com",
   "password": "secret",
   "role": "user"
 }
@@ -16,11 +16,12 @@ POST {{api}}/identity/sign-in
 Content-Type: application/json
 
 {
-  "email": "user1@mailinator.com",
+  "email": "user2@mailinator.com",
   "password": "secret"
 }
 
-@accessToken = {{sign_in.response.body.$.accessToken}}
+###
+@accessToken = {{sign_in.response.body.accessToken}}
 
 ### Get your user account details
 GET {{api}}/identity/me
@@ -53,6 +54,7 @@ Content-Type: application/json
   "description": "My parcel #1"
 }
 
+###
 @parcelId = {{add_parcel.response.headers.Resource-ID}}
 
 ### Get your parcels
@@ -72,6 +74,7 @@ Content-Type: application/json
 {
 }
 
+###
 @orderId = {{create_order.response.headers.Resource-ID}}
 
 ### Get your orders
@@ -106,6 +109,7 @@ Content-Type: application/json
   "variants": 1
 }
 
+###
 @vehicleId = {{add_vehicle.response.headers.Resource-ID}}
 
 ### Get a newly added vehicle
@@ -126,7 +130,7 @@ Content-Type: application/json
 }
 
 ### Browse the resources filtered by tags if needed
-GET {{api}}/availability/resources?tags={{tags}}&matchAllTags=false
+GET {{api}}/availability/resources?matchAllTags=false
 Authorization: Bearer {{accessToken}}
 
 ### Assign a vehicle to your order and set the desired delivery date
@@ -166,6 +170,7 @@ Content-Type: application/json
   "dateTime": "{{deliveryDate}}"
 }
 
+###
 @deliveryId = {{start_delivery.response.headers.Resource-ID}}
 
 
